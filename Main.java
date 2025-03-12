@@ -14,7 +14,7 @@ public class Main {
       Lab4.outputList(bubbleSortedList);
 
       System.out.println("\n\nInsertion sort results -------------------------------------------");
-      ArrayList<Integer> insertionSortedList = Lab4.bubbleSort(integerList);
+      ArrayList<Integer> insertionSortedList = Lab4.insertionSort(integerList);
       Lab4.outputList(insertionSortedList);
     }
 }
@@ -22,15 +22,34 @@ public class Main {
 class Lab4 {
   public static ArrayList<Integer> insertionSort(ArrayList<Integer> integerList) {
     // Step 1 - Implement insertion sort algorithm here
-
+    for (int i = 1; i < integerList.size(); i++) {
+      int currentElement = integerList.get(i);
+      int k;
+      for (k = i - 1; k >= 0 && integerList.get(k) > currentElement; k--) {
+        integerList.set(k + 1, integerList.get(k));
+      }
+      integerList.set(k + 1, currentElement);
+    }
     return integerList;
   }
 
   public static ArrayList<Integer> bubbleSort(ArrayList<Integer> integerList) {
     // Step 2 - Implement the bubble sort algorithm here
+    boolean needNextPass = true;
+    for (int k = 1; k < integerList.size() && needNextPass; k++) {
+      needNextPass = false;
+      for ( int i = 0; i < integerList.size() - k; i++) {
+        if (integerList.get(i) > integerList.get(i + 1)) {
+          int temp = integerList.get(i);
+          integerList.set(i, integerList.get(i + 1));
+          integerList.set(i + 1, temp);
+          needNextPass = true;
+        }
+      }
+    }
 
     return integerList;
-  }
+  } 
 
   public static ArrayList<Integer> getList() {
     ArrayList<Integer> integerList = new ArrayList<>();

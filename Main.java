@@ -6,25 +6,38 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-      System.out.println("Unsorted Array ---------------------------------------------------");
+      //System.out.println("Unsorted Array ---------------------------------------------------");
       ArrayList<Integer> integerList = Lab4.getList();
-      Lab4.outputList(integerList);
+      //Lab4.outputList(integerList);
       
-      System.out.println("\n\nBubble sort results ----------------------------------------------");
-      long startTime = System.nanoTime(); // init start time
-      ArrayList<Integer> bubbleSortedList = Lab4.bubbleSort(integerList);
-      long endTime = System.nanoTime(); // init end time
-      long elapsedTime = endTime - startTime; // calc elapsed time
-      Lab4.outputList(bubbleSortedList);
-      System.out.println("\n\nBubble Sort Time: " + elapsedTime);
+      int i;
+      long averageTime = 0;
+      
 
+      averageTime = 0;
       System.out.println("\n\nInsertion sort results -------------------------------------------");
-      startTime = System.nanoTime(); // init start time
-      ArrayList<Integer> insertionSortedList = Lab4.insertionSort(integerList);
-      endTime = System.nanoTime(); // init end time
-      elapsedTime = endTime - startTime; // calc elapsed time
-      Lab4.outputList(insertionSortedList);
-      System.out.println("\n\nInsertion Sort Time: " + elapsedTime);
+      for (i = 0; i < 100; i++) {
+        long startTime = System.nanoTime(); // init start time
+        ArrayList<Integer> insertionSortedList = Lab4.insertionSort(integerList);
+        long endTime = System.nanoTime(); // init end time
+        long elapsedTime = endTime - startTime; // calc elapsed time
+        //Lab4.outputList(insertionSortedList);
+        averageTime += elapsedTime;
+      }
+      averageTime /= 100;
+      System.out.println("\n\nInsertion Sort Time: " + averageTime + " over " + i + " passes");
+
+      System.out.println("\n\nBubble sort results ----------------------------------------------");
+      for (i = 0; i < 100; i++) {
+        long startTime = System.nanoTime(); // init start time
+        ArrayList<Integer> bubbleSortedList = Lab4.bubbleSort(integerList);
+        long endTime = System.nanoTime(); // init end time
+        long elapsedTime = endTime - startTime; // calc elapsed time
+        //Lab4.outputList(bubbleSortedList);
+        averageTime += elapsedTime;
+      }
+      averageTime /= 100;
+      System.out.println("\n\nBubble Sort Time: " + averageTime + " over " + i + " passes");
     }
 }
 

@@ -12,7 +12,17 @@ public class Main {
       
       int i;
       long averageTime = 0;
-      
+      System.out.println("\n\nBubble sort results ----------------------------------------------");
+      for (i = 0; i < 100; i++) {
+        long startTime = System.nanoTime(); // init start time
+        ArrayList<Integer> bubbleSortedList = Lab4.bubbleSort(integerList);
+        long endTime = System.nanoTime(); // init end time
+        long elapsedTime = endTime - startTime; // calc elapsed time
+        //Lab4.outputList(bubbleSortedList);
+        averageTime += elapsedTime;
+      }
+      averageTime /= 100;
+      System.out.println("\n\nBubble Sort Time: " + averageTime + " over " + i + " passes");
 
       averageTime = 0;
       System.out.println("\n\nInsertion sort results -------------------------------------------");
@@ -26,18 +36,6 @@ public class Main {
       }
       averageTime /= 100;
       System.out.println("\n\nInsertion Sort Time: " + averageTime + " over " + i + " passes");
-
-      System.out.println("\n\nBubble sort results ----------------------------------------------");
-      for (i = 0; i < 100; i++) {
-        long startTime = System.nanoTime(); // init start time
-        ArrayList<Integer> bubbleSortedList = Lab4.bubbleSort(integerList);
-        long endTime = System.nanoTime(); // init end time
-        long elapsedTime = endTime - startTime; // calc elapsed time
-        //Lab4.outputList(bubbleSortedList);
-        averageTime += elapsedTime;
-      }
-      averageTime /= 100;
-      System.out.println("\n\nBubble Sort Time: " + averageTime + " over " + i + " passes");
     }
 }
 
